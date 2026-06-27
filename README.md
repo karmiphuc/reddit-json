@@ -1,18 +1,20 @@
 # reddit-json
 
-Access Reddit content via Reddit's internal JSON API — without Cloudflare getting in the way.
+Access Reddit content via Reddit's public JSON API. A practical skill for AI agents that need posts, comments, or search results.
 
-## The Problem
+## When to use this
 
-Reddit serves a Cloudflare verification wall to most automated requests. Browser automation works, but for data extraction at scale, it's overkill.
+Reddit's HTML routes through Cloudflare and other anti-bot layers, which makes browser automation heavy for simple lookups. Appending `.json` to Reddit URLs returns structured data directly — useful for search, single posts, and comment trees.
 
-## The Solution
+## Limits
 
-Reddit exposes a public JSON API that doesn't route through Cloudflare anti-bot. Same data, no verification, no drama.
+- Private subreddits and gilded content are restricted.
+- Search selftext is truncated to ~500 characters; the full body requires the single-post endpoint.
+- Be a reasonable citizen on rate limits, and respect Reddit's terms of service and robots guidance.
 
 ## Quick Start
 
-Append `.json` to any Reddit URL:
+Append `.json` to a Reddit URL:
 
 ```bash
 # Search posts (includes truncated selftext excerpts)
